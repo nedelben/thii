@@ -1,130 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Jua&display=swap');
 
-:root {
-  /* 🧠 نسب فيرزاتشي (مبنية على 1.618) */
-  --golden-ratio: 1.618;
-  --unit: 1rem;
-  --space-xs: calc(var(--unit) / var(--golden-ratio)); /* ~0.618rem */
-  --space-sm: var(--unit); /* 1rem */
-  --space-md: calc(var(--unit) * var(--golden-ratio)); /* ~1.618rem */
-  --space-lg: calc(var(--space-md) * var(--golden-ratio)); /* ~2.618rem */
-
-  /* 🎨 الألوان */
-  --color-bg: #15202b; /* خلفية داكنة أنيقة */
-  --color-surface: #1e1e1e; /* كروت وخلفيات ثانوية */
-  --color-primary: #fe4501; /* برتقالي نابض – مميز */
-  --color-primary-hover: #ff5f24;
-  --color-secondary: #00c2ff; /* أزرق مضيء */
-  --color-accent: #9f45f8; /* بنفسجي عصري */
-  --color-success: #1db954; /* نجاح/موافقة */
-  --color-warning: #ffcc00; /* تنبيه */
-  --color-error: #ff4444; /* خطأ */
-
-  /* ✨ ألوان نصوص */
-  --text-main: #f6f8f9;
-  --text-main-2: #fe4501;
-  --text-muted: #999;
-  --text-invert: #000;
-
-  /* 🪄 حواف وزوايا */
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.618rem;
-  --radius-xl: 2.618rem;
-  --border-lg: solid 2px rgb(255, 255, 255);
-
-  /* 📦 الظلال */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-
-  /* 🔤 الخط */
-  --font-family: "Baloo 2", sans-serif;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.618rem;
-  --font-size-xl: 2.618rem;
-  --font-weight-bold: 800;
-
-  /* 🧭 ترانزيشن */
-  --transition-fast: 0.2s ease-in-out;
-  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* 🧰 المارجن و الباديينغ */
-  --margin-xs: 0.5rem;
-  --margin-sm: 1rem;
-  --margin-md: 1.618rem;
-  --margin-lg: 2.618rem;
-
-  --padding-xs: 0.5rem;
-  --padding-sm: 1rem;
-  --padding-md: 1.618rem;
-  --padding-lg: 2.618rem;
-
-  --padding-xs-header: 0.809rem 0.5rem;
-  --padding-sm-header: 0.809rem 1rem;
-  --padding-md-header: 0.809rem 1.618rem;
-  --padding-lg-header: 0.809rem 2.618rem;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+body{
+    font-family: "Baloo 2", sans-serif;
+    width: 100%;
+    background-color: #161e27;
 }
-html {
-  font-size: 16px;
+header{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    left: 0;
+    border-bottom: 1px #2b3b4d solid;
 }
-body {
-  background-color: var(--color-bg);
-  font-family: var(--font-family);
-  color: var(--text-main);
+header .first-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 10px;
+    width: 100%;
 }
-header {
-  display: flex;
-  flex-direction: column;
-  border-bottom: var(--border-lg);
+header .first-bar button{
+    background-color: #161e27;
+    color: #fefefd;
+    border: none;
 }
-header .first-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--padding-sm-header);
+header .first-bar h1{
+    color: #217dfa;
 }
-header .first-bar .left-icon {
-  font-size: var(--font-size-base);
+header .first-bar a{
+    background-color: #161e27;
+    color: #fefefd;
 }
-header .first-bar .logo {
-  display: flex;
+header .second-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-header .first-bar .logo .img-logo {
-  width: var(--font-size-lg);
+header .second-bar button{
+    width: 50%;
+    border: none;
+    background-color: #161e27;
+    color: #fefefd;
+    padding: 10px;
 }
-header .first-bar .logo h1 {
-  color: #f6f8f9;
-  font-size: var(--font-size-lg);
+header .second-bar button:hover{
+    background-color: #217bfa1e;
+    color: #217dfa;
 }
-header .first-bar .logo h1 span {
-  color: #fe4501;
+header .second-bar button:focus{
+    background-color: #217bfa1e;
+    color: #217dfa;
 }
-header .first-bar .right-icon {
-  font-size: var(--font-size-base);
-  color: var(--text-main);
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px #2b3b4d solid;
 }
-header .first-bar .right-icon a {
-  color: var(--text-main);
+footer .footer-icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
 }
-header .second-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+footer .footer-icon button{
+    background-color: #161e27;
+    color: #fefefd;
+    border: none;
 }
-header .second-bar button {
-  width: 50%;
-  border: none;
-  padding: var(--padding-sm-header);
-  background-color: var(--color-bg);
-  color: var(--text-main);
-  font-size: var(--font-size-sm);
-}
-
