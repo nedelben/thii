@@ -1,63 +1,179 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Jua&display=swap');
+:root {
+    /* ──────────────────────────────
+       📐 النسبة الذهبية (Golden Ratio)
+    ────────────────────────────── */
+    --phi: 1.618;               /* النسبة الذهبية */
+    --phi-inv: 0.618;           /* 1 / φ - لاستخدامها في المساحات أو الخط */
+    --phi-inv2: 0.382;          /* 1 / φ² - أصغر وحدة متناسبة */
+    --phi2: 2.618;              /* φ² - تكبير منطقي */
+    --phi3: 4.236;              /* φ³ - عناصر ضخمة (مثل هيدر أو عنوان كبير) */
+  
+    /* ──────────────────────────────
+       🎨 الألوان - متوافقة مع واجهة فاخرة
+    ────────────────────────────── */
+    --color-brand: #161e27;         /* اللون الأساسي - الذهبي الملكي */
+    --color-brand-dark: #0a0e12;    /* نسخة داكنة من الذهبي - للروابط */
+    --color-background: #fefcf8;    /* لون خلفية الصفحة */
+    --color-surface: #f5f5f5;       /* خلفيات الكروت أو المكونات */
+    --color-text: #fefefd;          /* النص الأساسي */
+    --color-muted: #777777;         /* النص الثانوي أو الرمادي */
+    --color-border: #e1e1e1;        /* الحدود والخطوط الفاصلة */
+    --color-link: var(--color-brand-dark); /* لون الروابط */
+  
+    /* 🎯 حالات النظام */
+    --color-success: #03C03C;       /* رسائل النجاح */
+    --color-warning: #e1b000;       /* رسائل التحذير */
+    --color-danger: #CE2029;        /* رسائل الخطأ أو الحذف */
+  
+    /* ──────────────────────────────
+       🔤 الخطوط
+    ────────────────────────────── */
+    --font-family-base: "Baloo 2", sans-serif; /* الخط الأساسي للنصوص */
+    --font-family-heading: 'Playfair Display', serif;             /* للعناوين الكبيرة */
+  
+    /* 🅰️ أحجام الخطوط */
+    --font-size-xxs: calc(1rem * var(--phi-inv2)); /* ~0.382rem - رموز، ملاحظات */
+    --font-size-xs: calc(1rem * var(--phi-inv));   /* ~0.618rem - عناصر صغيرة */
+    --font-size-sm: 1rem;                          /* النص القياسي */
+    --font-size-md: calc(1rem * var(--phi));       /* ~1.618rem - عناوين فرعية */
+    --font-size-lg: calc(1rem * var(--phi2));      /* ~2.618rem - عنوان رئيسي */
+    --font-size-xl: calc(1rem * var(--phi3));      /* ~4.236rem - شعار أو هيدر ضخم */
+  
+    /* 🔡 وزن الخط */
+    --font-weight-light: 300;      /* للنصوص الخفيفة أو الوصف */
+    --font-weight-regular: 400;    /* الوزن الافتراضي */
+    --font-weight-medium: 500;     /* للعناوين الفرعية */
+    --font-weight-bold: 700;       /* للعناوين الرئيسية أو التوكيد */
+  
+    /* ──────────────────────────────
+       📏 المسافات (Spacing System)
+    ────────────────────────────── */
+    --space-xxs: var(--font-size-xxs); /* مسافات ضيقة جدًا */
+    --space-xs: var(--font-size-xs);   /* هوامش داخلية صغيرة */
+    --space-sm: var(--font-size-sm);   /* padding / margin قياسي */
+    --space-md: var(--font-size-md);   /* تباعد عناصر أو بين كتل */
+    --space-lg: var(--font-size-lg);   /* هوامش خارجية كبيرة */
+    --space-xl: var(--font-size-xl);   /* أقسام رئيسية أو شبكات */
+  
+    /* ──────────────────────────────
+       📐 الأبعاد و الأحجام
+    ────────────────────────────── */
+    --container-max-width: 64rem;       /* أقصى عرض للحاوية الرئيسية */
+    --feed-width: 38.2rem;              /* عرض الفيد الرئيسي (مثل تويتر) */
+  
+    --avatar-size-sm: calc(1rem * var(--phi2));              /* ~2.618rem - صور مصغرة */
+    --avatar-size-md: calc(1rem * var(--phi3));              /* ~4.236rem - صور ملفات */
+    --avatar-size-lg: calc(1rem * var(--phi3) * var(--phi)); /* ~6.854rem - بروفايل كبير */
+  
+    --border-radius-sm: 4px;      /* بطاقات أو حقول إدخال */
+    --border-radius-md: 8px;      /* نوافذ أو قوائم */
+    --border-radius-lg: 13px;     /* عناصر فاخرة دائرية جزئيًا */
+  
+    /* ──────────────────────────────
+       ☁️ الظلال (Shadows)
+    ────────────────────────────── */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);   /* بطاقات خفيفة */
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);    /* hover على مكونات */
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);  /* حوارات أو نوافذ */
+  
+    /* ──────────────────────────────
+       ⏱️ تحولات وحركات (Transitions)
+    ────────────────────────────── */
+    --transition-fast: 0.236s;       /* للأنيميشن السريع */
+    --transition-normal: 0.382s;     /* الزمن القياسي للحركة */
+    --transition-slow: 0.618s;       /* للحوارات أو حركات توسع */
+    --transition-easing: ease-in-out;/* أسلوب الانتقال */
+  
+    /* ──────────────────────────────
+       🧱 طبقات (Z-index)
+    ────────────────────────────── */
+    --z-header: 1000;     /* الهيدر أو الترويسة */
+    --z-dropdown: 900;    /* القوائم المنسدلة */
+    --z-overlay: 800;     /* النوافذ النصف شفافة */
+    --z-base: 1;          /* العناصر الأساسية */
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Jua&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Jua&display=swap');
 
-*{
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-body{
-    font-family: "Baloo 2", sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-family-base);
     width: 100%;
     background-color: #161e27;
-}
-header{
+  }
+  
+  header {
     display: flex;
     flex-direction: column;
     position: fixed;
     right: 0;
     left: 0;
-    border-bottom: 1px #2b3b4d solid;
-}
-header .first-bar{
+    border-bottom: 1px solid #2b3b4d;
+    z-index: var(--z-header);
+  }
+  
+  header .first-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding:0 10px;
+    padding: 0 var(--space-sm);
     width: 100%;
-}
-header .first-bar button{
+  }
+  
+  header .first-bar button {
     background-color: #161e27;
     color: #fefefd;
     border: none;
-}
-header .first-bar h1{
-    color: #217dfa;
-}
-header .first-bar a{
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+  }
+  
+  header .first-bar h1 {
+    color: #fefefd;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  header .first-bar h1 span {
+    color: #ff4501;
+  }
+  
+  header .first-bar a {
     background-color: #161e27;
     color: #fefefd;
-}
-header .second-bar{
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+  }
+  
+  header .second-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-header .second-bar button{
+  }
+  
+  header .second-bar button {
     width: 50%;
     border: none;
     background-color: #161e27;
     color: #fefefd;
-    padding: 10px;
-}
-header .second-bar button:hover{
+    padding: var(--space-xs);
+    font-size: var(--font-size-sm);
+    transition: var(--transition-normal) var(--transition-easing);
+  }
+  
+  header .second-bar button:hover,
+  header .second-bar button:focus {
     background-color: #217bfa1e;
     color: #217dfa;
-}
-header .second-bar button:focus{
-    background-color: #217bfa1e;
-    color: #217dfa;
-}
-footer{
+  }
+  
+  footer {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -66,17 +182,22 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px #2b3b4d solid;
-}
-footer .footer-icon{
+    border-top: 1px solid #2b3b4d;
+    z-index: var(--z-header);
+  }
+  
+  footer .footer-icon {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    padding: 10px;
-}
-footer .footer-icon button{
+    padding: var(--space-xs);
+  }
+  
+  footer .footer-icon button {
     background-color: #161e27;
     color: #fefefd;
     border: none;
-}
+    font-size: var(--font-size-sm);
+  }
+  
